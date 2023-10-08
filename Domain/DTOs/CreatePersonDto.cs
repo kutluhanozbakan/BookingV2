@@ -1,17 +1,14 @@
-﻿using MediatR;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using BookingV2.Domain.Entities;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingV2.Application.PersonF.Commands
+namespace BookingV2.Domain.DTOs
 {
-    public class CreatePerson : IRequest<Person>
+    public class CreatePersonDto
     {
         public string UserName { get; set; }
-
         public string Email { get; set; }
         public string Password { get; set; }
     }

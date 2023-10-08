@@ -1,5 +1,7 @@
 ﻿using BookingV2.Domain.Entities;
 using BookingV2.Domain.SeedWorks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BookingV2.Infrastructure
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<Person, IdentityRole, string>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
@@ -52,6 +54,12 @@ namespace BookingV2.Infrastructure
                     }
                 }
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+            base.OnModelCreating(builder);
         }
     }
 }

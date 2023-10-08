@@ -1,4 +1,6 @@
+using BookingV2.Application.PersonF.Commands;
 using BookingV2.Application.PersonF.Queries;
+using BookingV2.Domain.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -48,6 +50,23 @@ namespace BookingV2.WebAPI.Controllers
                 return NotFound();
             }
         }
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register([FromServices] IMediator mediator, CreatePersonDto createPersonDto)
+        {
 
+            var createPerson = new CreatePerson { Email = createPersonDto.Email, Password = createPersonDto.Password, UserName = createPersonDto.UserName};
+            var person = await mediator.Send(createPerson);
+
+            if (person != null)
+            {
+                // Person nesnesi bulunduðunda 200 OK yanýtýný döndürün.
+                return Ok(person);
+            }
+            else
+            {
+                // Person nesnesi bulunamadýðýnda 404 Not Found yanýtýný döndürün.
+                return NotFound();
+            }
+        }
     }
 }

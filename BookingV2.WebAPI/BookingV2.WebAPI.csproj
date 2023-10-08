@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
@@ -20,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookingV2.Application\BookingV2.Application.csproj" />
-    <ProjectReference Include="..\BookingV2.Infrastructure\BookingV2.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
