@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace BookingV2.Application.Auth.QueryHandlers
 {
-    public class LoginHandler : IRequestHandler<Login, TokenDto>
+    public class LoginHandler : IRequestHandler<Login, Response<TokenDto>>
     {
         private readonly IAuthenticationRepository _authenticationRepository;
 
@@ -22,7 +22,7 @@ namespace BookingV2.Application.Auth.QueryHandlers
             _authenticationRepository = authenticationRepository;
         }
 
-        public async Task<TokenDto> Handle(Login request, CancellationToken cancellationToken)
+        public async Task<Response<TokenDto>> Handle(Login request, CancellationToken cancellationToken)
         {
             LoginDto loginDto = new LoginDto()
             {
@@ -30,7 +30,7 @@ namespace BookingV2.Application.Auth.QueryHandlers
                 Password = request.Password,
             };
             var a = await _authenticationRepository.CreateTokenAsync(loginDto);
-            return a.Data;
+            return a;
         }
 
         //async Task<LoginDto> IRequestHandler<Login, LoginDto>.Handle(Login request, CancellationToken cancellationToken)

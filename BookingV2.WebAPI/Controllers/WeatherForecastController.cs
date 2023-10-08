@@ -10,7 +10,7 @@ namespace BookingV2.WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : CustomBaseController
     {
         private static readonly string[] Summaries = new[]
         {
@@ -57,7 +57,7 @@ namespace BookingV2.WebAPI.Controllers
         public async Task<IActionResult> Register([FromServices] IMediator mediator, CreatePersonDto createPersonDto)
         {
 
-            var createPerson = new CreatePerson { Email = createPersonDto.Email, Password = createPersonDto.Password, UserName = createPersonDto.UserName};
+            var createPerson = new CreatePerson { Email = createPersonDto.Email, Password = createPersonDto.Password, UserName = createPersonDto.UserName };
             var person = await mediator.Send(createPerson);
 
             if (person != null)
@@ -76,17 +76,8 @@ namespace BookingV2.WebAPI.Controllers
         {
             var login = new Login { Email = loginDto.Email, Password = loginDto.Password };
             var person = await mediator.Send(login);
+            return ActionResultInstance(person);
 
-            if (person != null)
-            {
-                // Person nesnesi bulunduðunda 200 OK yanýtýný döndürün.
-                return Ok(person);
-            }
-            else
-            {
-                // Person nesnesi bulunamadýðýnda 404 Not Found yanýtýný döndürün.
-                return NotFound();
-            }
         }
     }
 }

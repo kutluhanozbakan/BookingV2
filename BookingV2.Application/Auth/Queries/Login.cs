@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookingV2.Application.Auth.Queries
 {
-    public class Login : IRequest<TokenDto>
+    public class Login : IRequest<Response<TokenDto>>
     {
         public string Email { get; set; }
         public string Password { get; set; }
