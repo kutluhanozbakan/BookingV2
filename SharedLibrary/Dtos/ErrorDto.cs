@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingV2.Domain.DTOs
+namespace BookingV2.SharedLibrary.Dtos
 {
     public class ErrorDto
     {

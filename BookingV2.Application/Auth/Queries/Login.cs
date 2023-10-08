@@ -1,5 +1,6 @@
 ﻿using BookingV2.Domain.DTOs;
 using BookingV2.Domain.Entities;
+using BookingV2.SharedLibrary.Dtos;
 using MediatR;
 using System;
 using System.Collections.Generic;

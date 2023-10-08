@@ -2,6 +2,7 @@
 using BookingV2.Domain.Entities;
 using BookingV2.Domain.Repositories;
 using BookingV2.Infrastructure.SeedWorks;
+using BookingV2.SharedLibrary.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

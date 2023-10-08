@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using SharedLibrary.Extensions;
 using System.Reflection;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
@@ -76,7 +77,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCustomException();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

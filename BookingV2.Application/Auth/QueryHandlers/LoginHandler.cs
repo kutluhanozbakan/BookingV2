@@ -3,6 +3,7 @@ using BookingV2.Application.PersonF.Queries;
 using BookingV2.Domain.DTOs;
 using BookingV2.Domain.Entities;
 using BookingV2.Domain.Repositories;
+using BookingV2.SharedLibrary.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,6 +25,7 @@ namespace BookingV2.Application.Auth.QueryHandlers
 
         public async Task<Response<TokenDto>> Handle(Login request, CancellationToken cancellationToken)
         {
+        
             LoginDto loginDto = new LoginDto()
             {
                 Email = request.Email,

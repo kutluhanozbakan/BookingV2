@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace BookingV2.Domain.DTOs
+namespace BookingV2.SharedLibrary.Dtos
 {
     public class Response<T> where T : class
     {
