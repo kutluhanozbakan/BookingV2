@@ -1,7 +1,9 @@
+using BookingV2.Application.Auth.Queries;
 using BookingV2.Application.PersonF.Commands;
 using BookingV2.Application.PersonF.Queries;
 using BookingV2.Domain.DTOs;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookingV2.WebAPI.Controllers
@@ -22,6 +24,7 @@ namespace BookingV2.WebAPI.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -56,6 +59,23 @@ namespace BookingV2.WebAPI.Controllers
 
             var createPerson = new CreatePerson { Email = createPersonDto.Email, Password = createPersonDto.Password, UserName = createPersonDto.UserName};
             var person = await mediator.Send(createPerson);
+
+            if (person != null)
+            {
+                // Person nesnesi bulunduðunda 200 OK yanýtýný döndürün.
+                return Ok(person);
+            }
+            else
+            {
+                // Person nesnesi bulunamadýðýnda 404 Not Found yanýtýný döndürün.
+                return NotFound();
+            }
+        }
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromServices] IMediator mediator, LoginDto loginDto)
+        {
+            var login = new Login { Email = loginDto.Email, Password = loginDto.Password };
+            var person = await mediator.Send(login);
 
             if (person != null)
             {
