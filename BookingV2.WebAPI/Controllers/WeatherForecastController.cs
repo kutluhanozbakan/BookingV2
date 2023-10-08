@@ -1,3 +1,5 @@
+using BookingV2.Application.PersonF.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookingV2.WebAPI.Controllers
@@ -29,5 +31,23 @@ namespace BookingV2.WebAPI.Controllers
             })
             .ToArray();
         }
+        [HttpGet("GetPersonById/{id}")]
+        public async Task<IActionResult> GetPersonById([FromServices] IMediator mediator, int id)
+        {
+            var getPerson = new GetPersonById { Id = id };
+            var person = await mediator.Send(getPerson);
+
+            if (person != null)
+            {
+                // Person nesnesi bulunduðunda 200 OK yanýtýný döndürün.
+                return Ok(person);
+            }
+            else
+            {
+                // Person nesnesi bulunamadýðýnda 404 Not Found yanýtýný döndürün.
+                return NotFound();
+            }
+        }
+
     }
 }
