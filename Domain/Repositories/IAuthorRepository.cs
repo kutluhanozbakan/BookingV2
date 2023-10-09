@@ -12,5 +12,6 @@ namespace BookingV2.Domain.Repositories
     public interface IAuthorRepository : IGenericRepository<Author>
     {
         Task<Response<AuthorDto>> AddAuthor(Author authorDto);
+        Task<Response<List<AuthorDto>>> GetAllAuthor();
     }
 }

@@ -26,6 +26,25 @@ namespace BookingV2.Infrastructure.Repositories
             return Response<AuthorDto>.Success(null, StatusCodes.Status200OK);
         }
 
-
+        public async Task<Response<List<AuthorDto>>> GetAllAuthor()
+        {
+            var list = await _appDbContext.Author.ToListAsync();
+            List<AuthorDto> result = new List<AuthorDto>();
+            if(list != null)
+            {
+                foreach (var author in list)
+                {
+                    AuthorDto authorDto = new AuthorDto()
+                    {
+                        Books = (List<Book>)author.Books,
+                        Name = author.Name,
+                        Surname = author.Surname,
+                    };
+                    result.Add(authorDto);
+                }
+               
+            }
+            return Response<List<AuthorDto>>.Success(result, StatusCodes.Status200OK);
+        }
     }
 }
