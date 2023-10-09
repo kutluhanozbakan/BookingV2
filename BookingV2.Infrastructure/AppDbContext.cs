@@ -18,6 +18,9 @@ namespace BookingV2.Infrastructure
 
         }
         public DbSet<Person> Person { get; set; }
+        public DbSet<Book> Book { get; set; }
+        public DbSet<Author> Author { get; set; }
+
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
