@@ -20,6 +20,5 @@ namespace BookingV2.Domain.Entities
         public string isbn { get; private set; }
         public int authorId { get; private set; }
 
-        public Author Author { get; private set; }
     }
 }

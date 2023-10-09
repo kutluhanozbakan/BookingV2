@@ -10,15 +10,15 @@ namespace BookingV2.Domain.Entities
 {
     public class Author : BaseEntity
     {
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public ICollection<Book> Books { get; private set; }
+        public string Name { get;  set; }
+        public string Surname { get;  set; }
+        public ICollection<Book> Books { get;  set; }
 
-        public Author(string name, string surname)
+        public Author(string name = "", string surname = "")
         {
             Name = name;
             Surname = surname;
-            Books = new List<Book>(); ;
+            Books = new List<Book>();
         }
     }
 }

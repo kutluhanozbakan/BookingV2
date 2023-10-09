@@ -14,14 +14,14 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BookingV2.Application.PersonF.CommandHandlers
 {
-    public class CreatePersonHandler : IRequestHandler<CreatePerson, Person>
+    public class AddAuthorHandler : IRequestHandler<CreatePerson, Person>
     {
         private readonly IPersonRepository _personRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<Person> _userManager;
 
 
-        public CreatePersonHandler(IPersonRepository personRepository, IUnitOfWork unitOfWork, UserManager<Person> userManager = null)
+        public AddAuthorHandler(IPersonRepository personRepository, IUnitOfWork unitOfWork, UserManager<Person> userManager = null)
         {
             _unitOfWork = unitOfWork;
             _personRepository = personRepository;
