@@ -37,12 +37,10 @@ namespace BookingV2.WebAPI.Controllers
 
             if (allauthor != null)
             {
-                // Person nesnesi bulunduğunda 200 OK yanıtını döndürün.
                 return Ok(allauthor);
             }
             else
             {
-                // Person nesnesi bulunamadığında 404 Not Found yanıtını döndürün.
                 return NotFound();
             }
         }

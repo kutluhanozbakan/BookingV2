@@ -30,7 +30,7 @@ namespace BookingV2.Application.BookF.CommandHandler
         {
             var bookR = new Book(request.Name, request.Isbn, request.AuthorId);
             await _bookRepository.AddAsync(bookR);
-            _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync();
             return Response<Book>.Success(bookR, StatusCodes.Status200OK);
         }
     }
